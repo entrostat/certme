@@ -23,9 +23,14 @@ export async function addDomainToNginx(domain: Domain) {
     proxy_cache_bypass $http_upgrade;
     proxy_no_cache $http_pragma $http_authorization;
 	}
+
+	location /__local_https_route {
+	  add_header Content-Type text/html;
+	  return 200 '<html><body><h1>127.0.0.1:${domain.port} ---> https://${domain.domain}</h1></body></html>';
+	}
 }
 `;
-    await fs.writeFile(path.join('/etc/nginx/conf.d', `${domain.domain.replace(/[^A-Za-z0-9.]/g, '')}`), domainEntry);
+    await fs.writeFile(path.join('/etc/nginx/conf.d', `${domain.domain.replace(/[^A-Za-z0-9.]/g, '')}.conf`), domainEntry);
     return new Promise((resolve, reject) => {
         exec(`systemctl restart nginx`, (err, stdout, stderr) => {
             if (err) {
