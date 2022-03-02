@@ -54,6 +54,13 @@ export abstract class BaseCommand extends Command {
     }
 
     /**
+     * Returns the directory where to back up the hosts files
+     */
+    async getHostsBackupPath() {
+        return path.join(path.dirname(await this.getConfigPath()), 'hosts-backups');
+    }
+
+    /**
      * Saves the config to file
      * @param data The data we want to save
      */
