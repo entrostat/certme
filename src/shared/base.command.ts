@@ -31,10 +31,11 @@ export abstract class BaseCommand extends Command {
      */
     async createConfigIfNotExists() {
         if (!(await this.checkConfigExists())) {
+            await fs.mkdirp(path.dirname(await this.getConfigPath()));
             const emptyConfig: ApplicationConfig = {
                 domains: [],
             };
-            await fs.writeJSON(await this.getConfigPath(), emptyConfig);
+            await this.saveConfig(emptyConfig);
         }
     }
 
@@ -52,5 +53,13 @@ export abstract class BaseCommand extends Command {
             // Do nothing in this case
         }
         return path.join(Config.installedConfig.defaultConfigPath, Config.installedConfig.configName);
+    }
+
+    /**
+     * Saves the config to file
+     * @param data The data we want to save
+     */
+    async saveConfig(data: ApplicationConfig) {
+        await fs.writeJSON(await this.getConfigPath(), data);
     }
 }

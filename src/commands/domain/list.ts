@@ -12,5 +12,13 @@ export default class DomainList extends BaseCommand {
 
     public async run(): Promise<void> {
         const { args, flags } = await this.parse(DomainList);
+        const config = await this.getConfig();
+        config.domains.forEach((domain) => {
+            this.log(`127.0.0.1:${domain.port} ---> https://${domain.domain}`);
+        });
+
+        if (config.domains.length === 0) {
+            this.log('No domains registered...');
+        }
     }
 }

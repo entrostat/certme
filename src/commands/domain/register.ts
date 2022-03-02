@@ -23,5 +23,16 @@ export default class DomainRegister extends BaseCommand {
 
     public async run(): Promise<void> {
         const { args, flags } = await this.parse(DomainRegister);
+        this.log(`Registering new domain:`);
+        this.log(`127.0.0.1:${flags.port} ---> https://${flags.domain}`);
+
+        const config = await this.getConfig();
+        config.domains.push({
+            domain: flags.domain,
+            port: flags.port,
+        });
+        await this.saveConfig(config);
+
+        this.log(`Domain registered successfully`);
     }
 }
