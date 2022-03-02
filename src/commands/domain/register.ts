@@ -3,6 +3,7 @@ import { BaseCommand } from '../../shared/base.command';
 import { v4 as uuid } from 'uuid';
 import { addDomainToHostsFile } from '../../shared/add-domain-to-hosts-file';
 import { Domain } from '../../shared/models/domain';
+import { addDomainToNginx } from '../../shared/add-domain-to-nginx';
 
 export default class DomainRegister extends BaseCommand {
     static description = 'Registers a new domain, creates the certificate, nginx config update and a change in the hosts file.';
@@ -39,6 +40,7 @@ export default class DomainRegister extends BaseCommand {
         await this.saveConfig(config);
 
         await addDomainToHostsFile(domain, await this.getHostsBackupPath());
+        await addDomainToNginx(domain);
 
         this.log(`Domain registered successfully`);
     }
