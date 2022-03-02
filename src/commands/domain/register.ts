@@ -1,5 +1,6 @@
 import { Command, Flags } from '@oclif/core';
 import { BaseCommand } from '../../shared/base.command';
+import { v4 as uuid } from 'uuid';
 
 export default class DomainRegister extends BaseCommand {
     static description = 'Registers a new domain, creates the certificate, nginx config update and a change in the hosts file.';
@@ -30,6 +31,7 @@ export default class DomainRegister extends BaseCommand {
         config.domains.push({
             domain: flags.domain,
             port: flags.port,
+            uuid: uuid().toString(),
         });
         await this.saveConfig(config);
 

@@ -2,12 +2,10 @@ import { Command } from '@oclif/core';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { Config } from '../config';
+import { Domain } from './models/domain';
 
 export interface ApplicationConfig {
-    domains: {
-        domain: string;
-        port: number;
-    }[];
+    domains: Domain[];
 }
 
 export abstract class BaseCommand extends Command {
