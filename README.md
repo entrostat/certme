@@ -1,4 +1,4 @@
-local-https-dev
+certme
 =================
 
 A CLI used to create a local https dev environment with the green lock.
@@ -9,6 +9,8 @@ A CLI used to create a local https dev environment with the green lock.
 [![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
 
 <!-- toc -->
+* [Introduction](#introduction)
+* [Roadmap](#roadmap)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
@@ -36,22 +38,27 @@ sudo systemctl enable nginx
 ## Getting Started
 Getting started is pretty easy! If you have `nginx` and `mkcert` installed, then you just need to install the CLI.
 
+```bash
+npm install -g certme
+sudo ln -s $(which certme) /usr/bin/certme
+```
+
 Once the CLI is installed, you need to register your system username (the certificates are generated locally) and then start adding your domains.
 
 And example of the commands would be as follows, you'll notice that it must be run as `sudo` since it edits the `/etc/hosts` file and creates an `nginx` config file. 
 
 ```bash
-sudo local-https-dev user:register kerren
-sudo local-https-dev domain:register --domain=mytestdomain.com --port=9000
+sudo certme user:register kerren
+sudo certme domain:register --domain=mytestdomain.com --port=9000
 ```
 
 And that should be it! Visit [https://mytestdomain.com](https://mytestdomain.com) and you should see the green lock!
 
-![](./assets/local-https-dev_eg1.png)
+![](./assets/certme_eg1.png)
 
 Now if you visit the domain:
 
-![](./assets/local-https-dev_eg2.png)
+![](./assets/certme_eg2.png)
 
 
 # Roadmap
@@ -60,80 +67,111 @@ This was my "POC" to ensure that I wasn't crazy and that it was possible to get 
  - [ ] Create an `init` command that installs everything for you and prompts you for the info needed for a better UX.
  - [ ] Use `dnsmasq` instead of editing the `hosts` file so that I have wildcards... and I don't edit the `hosts` file.
  - [ ] Create a frontend dashboard to show you what has been registered and allow you to make edits
+ - [ ] Create builds for all the different platforms: `deb`, `snap`, `AppImage`, etc.
 
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g local-https-dev
-$ local-https-dev COMMAND
+$ npm install -g certme
+$ certme COMMAND
 running command...
-$ local-https-dev (--version)
-local-https-dev/0.0.0 linux-x64 node-v14.17.3
-$ local-https-dev --help [COMMAND]
+$ certme (--version)
+certme/1.0.2 linux-x64 node-v16.14.0
+$ certme --help [COMMAND]
 USAGE
-  $ local-https-dev COMMAND
+  $ certme COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`local-https-dev hello PERSON`](#local-https-dev-hello-person)
-* [`local-https-dev hello world`](#local-https-dev-hello-world)
-* [`local-https-dev help [COMMAND]`](#local-https-dev-help-command)
-* [`local-https-dev plugins`](#local-https-dev-plugins)
-* [`local-https-dev plugins:inspect PLUGIN...`](#local-https-dev-pluginsinspect-plugin)
-* [`local-https-dev plugins:install PLUGIN...`](#local-https-dev-pluginsinstall-plugin)
-* [`local-https-dev plugins:link PLUGIN`](#local-https-dev-pluginslink-plugin)
-* [`local-https-dev plugins:uninstall PLUGIN...`](#local-https-dev-pluginsuninstall-plugin)
-* [`local-https-dev plugins update`](#local-https-dev-plugins-update)
+* [`certme domain clear-all`](#certme-domain-clear-all)
+* [`certme domain list`](#certme-domain-list)
+* [`certme domain register`](#certme-domain-register)
+* [`certme domain remove`](#certme-domain-remove)
+* [`certme help [COMMAND]`](#certme-help-command)
+* [`certme plugins`](#certme-plugins)
+* [`certme plugins:inspect PLUGIN...`](#certme-pluginsinspect-plugin)
+* [`certme plugins:install PLUGIN...`](#certme-pluginsinstall-plugin)
+* [`certme plugins:link PLUGIN`](#certme-pluginslink-plugin)
+* [`certme plugins:uninstall PLUGIN...`](#certme-pluginsuninstall-plugin)
+* [`certme plugins update`](#certme-plugins-update)
+* [`certme user register USER`](#certme-user-register-user)
 
-## `local-https-dev hello PERSON`
+## `certme domain clear-all`
 
-Say hello
+Removes all of the registered domains
 
 ```
 USAGE
-  $ local-https-dev hello [PERSON] -f <value>
+  $ certme domain clear-all
 
-ARGUMENTS
-  PERSON  Person to say hello to
+DESCRIPTION
+  Removes all of the registered domains
+
+EXAMPLES
+  $ certme domain clear-all
+```
+
+## `certme domain list`
+
+Lists the existing domains that have been registered
+
+```
+USAGE
+  $ certme domain list
+
+DESCRIPTION
+  Lists the existing domains that have been registered
+
+EXAMPLES
+  $ certme domain list
+```
+
+## `certme domain register`
+
+Registers a new domain, creates the certificate, nginx config update and a change in the hosts file.
+
+```
+USAGE
+  $ certme domain register -d <value> [-p <value>]
 
 FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
+  -d, --domain=<value>  (required) The domain that you would like to add to the system
+  -p, --port=<value>    [default: 80] The port that this will be running on on your local machine
 
 DESCRIPTION
-  Say hello
+  Registers a new domain, creates the certificate, nginx config update and a change in the hosts file.
 
 EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
+  $ certme domain register
 ```
 
-_See code: [dist/commands/hello/index.ts](https://github.com/Kerren-Entrostat/local-https-dev/blob/v0.0.0/dist/commands/hello/index.ts)_
+## `certme domain remove`
 
-## `local-https-dev hello world`
-
-Say hello world
+Remove a domain from the registered domains
 
 ```
 USAGE
-  $ local-https-dev hello world
+  $ certme domain remove -d <value>
+
+FLAGS
+  -d, --domain=<value>  (required) The domain that you would like to remove from the system
 
 DESCRIPTION
-  Say hello world
+  Remove a domain from the registered domains
 
 EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/world.ts)
+  $ certme domain remove
 ```
 
-## `local-https-dev help [COMMAND]`
+## `certme help [COMMAND]`
 
-Display help for local-https-dev.
+Display help for certme.
 
 ```
 USAGE
-  $ local-https-dev help [COMMAND] [-n]
+  $ certme help [COMMAND] [-n]
 
 ARGUMENTS
   COMMAND  Command to show help for.
@@ -142,18 +180,18 @@ FLAGS
   -n, --nested-commands  Include all nested commands in the output.
 
 DESCRIPTION
-  Display help for local-https-dev.
+  Display help for certme.
 ```
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.10/src/commands/help.ts)_
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.12/src/commands/help.ts)_
 
-## `local-https-dev plugins`
+## `certme plugins`
 
 List installed plugins.
 
 ```
 USAGE
-  $ local-https-dev plugins [--core]
+  $ certme plugins [--core]
 
 FLAGS
   --core  Show core plugins.
@@ -162,18 +200,18 @@ DESCRIPTION
   List installed plugins.
 
 EXAMPLES
-  $ local-https-dev plugins
+  $ certme plugins
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.0.11/src/commands/plugins/index.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.1.0/src/commands/plugins/index.ts)_
 
-## `local-https-dev plugins:inspect PLUGIN...`
+## `certme plugins:inspect PLUGIN...`
 
 Displays installation properties of a plugin.
 
 ```
 USAGE
-  $ local-https-dev plugins:inspect PLUGIN...
+  $ certme plugins:inspect PLUGIN...
 
 ARGUMENTS
   PLUGIN  [default: .] Plugin to inspect.
@@ -186,16 +224,16 @@ DESCRIPTION
   Displays installation properties of a plugin.
 
 EXAMPLES
-  $ local-https-dev plugins:inspect myplugin
+  $ certme plugins:inspect myplugin
 ```
 
-## `local-https-dev plugins:install PLUGIN...`
+## `certme plugins:install PLUGIN...`
 
 Installs a plugin into the CLI.
 
 ```
 USAGE
-  $ local-https-dev plugins:install PLUGIN...
+  $ certme plugins:install PLUGIN...
 
 ARGUMENTS
   PLUGIN  Plugin to install.
@@ -217,23 +255,23 @@ DESCRIPTION
   the CLI without the need to patch and update the whole CLI.
 
 ALIASES
-  $ local-https-dev plugins add
+  $ certme plugins add
 
 EXAMPLES
-  $ local-https-dev plugins:install myplugin 
+  $ certme plugins:install myplugin 
 
-  $ local-https-dev plugins:install https://github.com/someuser/someplugin
+  $ certme plugins:install https://github.com/someuser/someplugin
 
-  $ local-https-dev plugins:install someuser/someplugin
+  $ certme plugins:install someuser/someplugin
 ```
 
-## `local-https-dev plugins:link PLUGIN`
+## `certme plugins:link PLUGIN`
 
 Links a plugin into the CLI for development.
 
 ```
 USAGE
-  $ local-https-dev plugins:link PLUGIN
+  $ certme plugins:link PLUGIN
 
 ARGUMENTS
   PATH  [default: .] path to plugin
@@ -251,16 +289,16 @@ DESCRIPTION
   command will override the user-installed or core plugin implementation. This is useful for development work.
 
 EXAMPLES
-  $ local-https-dev plugins:link myplugin
+  $ certme plugins:link myplugin
 ```
 
-## `local-https-dev plugins:uninstall PLUGIN...`
+## `certme plugins:uninstall PLUGIN...`
 
 Removes a plugin from the CLI.
 
 ```
 USAGE
-  $ local-https-dev plugins:uninstall PLUGIN...
+  $ certme plugins:uninstall PLUGIN...
 
 ARGUMENTS
   PLUGIN  plugin to uninstall
@@ -273,17 +311,17 @@ DESCRIPTION
   Removes a plugin from the CLI.
 
 ALIASES
-  $ local-https-dev plugins unlink
-  $ local-https-dev plugins remove
+  $ certme plugins unlink
+  $ certme plugins remove
 ```
 
-## `local-https-dev plugins update`
+## `certme plugins update`
 
 Update installed plugins.
 
 ```
 USAGE
-  $ local-https-dev plugins update [-h] [-v]
+  $ certme plugins update [-h] [-v]
 
 FLAGS
   -h, --help     Show CLI help.
@@ -291,5 +329,23 @@ FLAGS
 
 DESCRIPTION
   Update installed plugins.
+```
+
+## `certme user register USER`
+
+Register a user that is on the system so that we can edit the trust servers for their account
+
+```
+USAGE
+  $ certme user register [USER]
+
+ARGUMENTS
+  USER  The username for the account using the browser (eg. run "whoami")
+
+DESCRIPTION
+  Register a user that is on the system so that we can edit the trust servers for their account
+
+EXAMPLES
+  $ certme user register
 ```
 <!-- commandsstop -->
