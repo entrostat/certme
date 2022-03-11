@@ -1,15 +1,15 @@
 {
-  "name": "local-https-dev",
-  "version": "0.0.0",
+  "name": "certme",
+  "version": "1.0.0",
   "description": "A CLI to add and remove local development environments and create https certificates for them.",
   "author": "Kerren @Kerren-Entrostat",
   "bin": {
-    "local-https-dev": "./bin/run"
+    "certme": "./bin/run"
   },
-  "homepage": "https://github.com/Kerren-Entrostat/local-https-dev",
+  "homepage": "https://github.com/Kerren-Entrostat/certme",
   "license": "MIT",
   "main": "dist/index.js",
-  "repository": "Kerren-Entrostat/local-https-dev",
+  "repository": "Kerren-Entrostat/certme",
   "files": [
     "/bin",
     "/dist",
@@ -45,8 +45,8 @@
     "typescript": "^4.4.3"
   },
   "oclif": {
-    "bin": "local-https-dev",
-    "dirname": "local-https-dev",
+    "bin": "certme",
+    "dirname": "certme",
     "commands": "./dist/commands",
     "plugins": [
       "@oclif/plugin-help",
@@ -61,17 +61,20 @@
   },
   "scripts": {
     "build": "shx rm -rf dist && tsc -b",
+    "build:deb": "oclif pack deb",
+    "build:tarballs": "oclif pack tarballs",
     "lint": "eslint . --ext .ts --config .eslintrc",
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "yarn lint",
     "prepack": "yarn build && oclif manifest && oclif readme",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif readme && git add README.md"
+    "version": "oclif readme && git add README.md",
+    "release": "entro-version --during-release-post-hook=\"npm publish && git commit -am 'Updated the readme'\""
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
-  "bugs": "https://github.com/Kerren-Entrostat/local-https-dev/issues",
+  "bugs": "https://github.com/Kerren-Entrostat/certme/issues",
   "keywords": [
     "oclif"
   ],
