@@ -2,13 +2,18 @@ import { Domain } from './models/domain';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { exec } from 'child_process';
+import { getCertificateRoot } from './get-certificate-root';
 
-export async function addDomainToNginx(domain: Domain) {
+export async function addDomainToNginx(domain: Domain, user: string) {
+    const caRoot = await getCertificateRoot(user);
     const domainEntry = `
   server {
-	listen 80;
+	listen 443 ssl;
 
 	server_name ${domain.domain} ${domain.uuid};
+	ssl_certificate ${path.join(caRoot, 'cert.pem')};
+  ssl_certificate_key ${path.join(caRoot, 'key.pem')};
+
 
 	location / {
 		proxy_pass http://127.0.0.1:${domain.port};

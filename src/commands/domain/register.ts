@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import { addDomainToHostsFile } from '../../shared/add-domain-to-hosts-file';
 import { Domain } from '../../shared/models/domain';
 import { addDomainToNginx } from '../../shared/add-domain-to-nginx';
+import { createCertificate } from '../../shared/create-certificate';
 
 export default class DomainRegister extends BaseCommand {
     static description = 'Registers a new domain, creates the certificate, nginx config update and a change in the hosts file.';
@@ -31,6 +32,13 @@ export default class DomainRegister extends BaseCommand {
         this.log(`127.0.0.1:${flags.port} ---> https://${flags.domain}`);
 
         const config = await this.getConfig();
+
+        const domainExists = config.domains.some((d) => d.domain === flags.domain && d.port === flags.port);
+
+        if (domainExists) {
+            this.error(`The domain ${flags.domain} and port ${flags.port} is already registered...`);
+        }
+
         const domain: Domain = {
             domain: flags.domain,
             port: flags.port,
@@ -40,7 +48,8 @@ export default class DomainRegister extends BaseCommand {
         await this.saveConfig(config);
 
         await addDomainToHostsFile(domain, await this.getHostsBackupPath());
-        await addDomainToNginx(domain);
+        await createCertificate(config.domains, config.user);
+        await addDomainToNginx(domain, config.user);
 
         this.log(`Domain registered successfully`);
     }

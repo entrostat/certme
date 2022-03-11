@@ -6,6 +6,7 @@ import { Domain } from './models/domain';
 
 export interface ApplicationConfig {
     domains: Domain[];
+    user: string;
 }
 
 export abstract class BaseCommand extends Command {
@@ -32,6 +33,7 @@ export abstract class BaseCommand extends Command {
             await fs.mkdirp(path.dirname(await this.getConfigPath()));
             const emptyConfig: ApplicationConfig = {
                 domains: [],
+                user: '',
             };
             await this.saveConfig(emptyConfig);
         }
@@ -58,6 +60,14 @@ export abstract class BaseCommand extends Command {
      */
     async getHostsBackupPath() {
         return path.join(path.dirname(await this.getConfigPath()), 'hosts-backups');
+    }
+
+    /**
+     * Returns the path to the certificate files
+     *
+     */
+    async getCertsPath() {
+        return path.dirname(await this.getConfigPath());
     }
 
     /**
