@@ -40,6 +40,7 @@ Getting started is pretty easy! If you have `nginx` and `mkcert` installed, then
 
 ```bash
 npm install -g certme
+sudo ln -s $(which certme) /usr/bin/certme
 ```
 
 Once the CLI is installed, you need to register your system username (the certificates are generated locally) and then start adding your domains.
@@ -47,8 +48,8 @@ Once the CLI is installed, you need to register your system username (the certif
 And example of the commands would be as follows, you'll notice that it must be run as `sudo` since it edits the `/etc/hosts` file and creates an `nginx` config file. 
 
 ```bash
-sudo $(which certme) user:register kerren
-sudo $(which certme) domain:register --domain=mytestdomain.com --port=9000
+sudo certme user:register kerren
+sudo certme domain:register --domain=mytestdomain.com --port=9000
 ```
 
 And that should be it! Visit [https://mytestdomain.com](https://mytestdomain.com) and you should see the green lock!
