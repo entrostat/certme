@@ -69,7 +69,7 @@
     "prepack": "yarn build && oclif manifest && oclif readme",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif readme && git add README.md",
-    "release": "entro-version --during-release-post-hook=\"npm publish && git commit -am 'Updated the readme'\""
+    "release": "entro-version --master-branch-name=main --during-release-post-hook=\"npm publish && git commit -am 'Updated the readme'\""
   },
   "engines": {
     "node": ">=14.0.0"
