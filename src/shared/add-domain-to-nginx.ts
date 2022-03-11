@@ -8,6 +8,7 @@ export async function addDomainToNginx(domain: Domain, user: string) {
     const caRoot = await getCertificateRoot(user);
     const domainEntry = `
   server {
+  listen 80;
 	listen 443 ssl;
 
 	server_name ${domain.domain} ${domain.uuid};
