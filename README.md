@@ -38,13 +38,17 @@ sudo systemctl enable nginx
 ## Getting Started
 Getting started is pretty easy! If you have `nginx` and `mkcert` installed, then you just need to install the CLI.
 
+```bash
+npm install -g certme
+```
+
 Once the CLI is installed, you need to register your system username (the certificates are generated locally) and then start adding your domains.
 
 And example of the commands would be as follows, you'll notice that it must be run as `sudo` since it edits the `/etc/hosts` file and creates an `nginx` config file. 
 
 ```bash
-sudo certme user:register kerren
-sudo certme domain:register --domain=mytestdomain.com --port=9000
+sudo $(which certme) user:register kerren
+sudo $(which certme) domain:register --domain=mytestdomain.com --port=9000
 ```
 
 And that should be it! Visit [https://mytestdomain.com](https://mytestdomain.com) and you should see the green lock!
@@ -71,7 +75,7 @@ $ npm install -g certme
 $ certme COMMAND
 running command...
 $ certme (--version)
-certme/1.0.0 linux-x64 node-v16.14.0
+certme/1.0.1 linux-x64 node-v16.14.0
 $ certme --help [COMMAND]
 USAGE
   $ certme COMMAND
