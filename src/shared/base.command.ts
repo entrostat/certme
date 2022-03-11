@@ -56,6 +56,13 @@ export abstract class BaseCommand extends Command {
     }
 
     /**
+     * Returns the directory where to back up the config files
+     */
+    async getConfigBackupPath() {
+        return path.join(path.dirname(await this.getConfigPath()), 'config-backups');
+    }
+
+    /**
      * Returns the directory where to back up the hosts files
      */
     async getHostsBackupPath() {
