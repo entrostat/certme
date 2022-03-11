@@ -61,6 +61,8 @@
   },
   "scripts": {
     "build": "shx rm -rf dist && tsc -b",
+    "build:deb": "oclif pack deb",
+    "build:tarballs": "oclif pack tarballs",
     "lint": "eslint . --ext .ts --config .eslintrc",
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "yarn lint",
@@ -69,7 +71,7 @@
     "version": "oclif readme && git add README.md"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "bugs": "https://github.com/Kerren-Entrostat/local-https-dev/issues",
   "keywords": [

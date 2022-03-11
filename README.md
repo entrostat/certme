@@ -9,6 +9,8 @@ A CLI used to create a local https dev environment with the green lock.
 [![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
 
 <!-- toc -->
+* [Introduction](#introduction)
+* [Roadmap](#roadmap)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
@@ -68,7 +70,7 @@ $ npm install -g local-https-dev
 $ local-https-dev COMMAND
 running command...
 $ local-https-dev (--version)
-local-https-dev/0.0.0 linux-x64 node-v14.17.3
+local-https-dev/0.0.0 linux-x64 node-v16.14.0
 $ local-https-dev --help [COMMAND]
 USAGE
   $ local-https-dev COMMAND
@@ -77,8 +79,10 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`local-https-dev hello PERSON`](#local-https-dev-hello-person)
-* [`local-https-dev hello world`](#local-https-dev-hello-world)
+* [`local-https-dev domain clear-all`](#local-https-dev-domain-clear-all)
+* [`local-https-dev domain list`](#local-https-dev-domain-list)
+* [`local-https-dev domain register`](#local-https-dev-domain-register)
+* [`local-https-dev domain remove`](#local-https-dev-domain-remove)
 * [`local-https-dev help [COMMAND]`](#local-https-dev-help-command)
 * [`local-https-dev plugins`](#local-https-dev-plugins)
 * [`local-https-dev plugins:inspect PLUGIN...`](#local-https-dev-pluginsinspect-plugin)
@@ -86,45 +90,73 @@ USAGE
 * [`local-https-dev plugins:link PLUGIN`](#local-https-dev-pluginslink-plugin)
 * [`local-https-dev plugins:uninstall PLUGIN...`](#local-https-dev-pluginsuninstall-plugin)
 * [`local-https-dev plugins update`](#local-https-dev-plugins-update)
+* [`local-https-dev user register USER`](#local-https-dev-user-register-user)
 
-## `local-https-dev hello PERSON`
+## `local-https-dev domain clear-all`
 
-Say hello
+Removes all of the registered domains
 
 ```
 USAGE
-  $ local-https-dev hello [PERSON] -f <value>
+  $ local-https-dev domain clear-all
 
-ARGUMENTS
-  PERSON  Person to say hello to
+DESCRIPTION
+  Removes all of the registered domains
+
+EXAMPLES
+  $ local-https-dev domain clear-all
+```
+
+## `local-https-dev domain list`
+
+Lists the existing domains that have been registered
+
+```
+USAGE
+  $ local-https-dev domain list
+
+DESCRIPTION
+  Lists the existing domains that have been registered
+
+EXAMPLES
+  $ local-https-dev domain list
+```
+
+## `local-https-dev domain register`
+
+Registers a new domain, creates the certificate, nginx config update and a change in the hosts file.
+
+```
+USAGE
+  $ local-https-dev domain register -d <value> [-p <value>]
 
 FLAGS
-  -f, --from=<value>  (required) Whom is saying hello
+  -d, --domain=<value>  (required) The domain that you would like to add to the system
+  -p, --port=<value>    [default: 80] The port that this will be running on on your local machine
 
 DESCRIPTION
-  Say hello
+  Registers a new domain, creates the certificate, nginx config update and a change in the hosts file.
 
 EXAMPLES
-  $ oex hello friend --from oclif
-  hello friend from oclif! (./src/commands/hello/index.ts)
+  $ local-https-dev domain register
 ```
 
-_See code: [dist/commands/hello/index.ts](https://github.com/Kerren-Entrostat/local-https-dev/blob/v0.0.0/dist/commands/hello/index.ts)_
+## `local-https-dev domain remove`
 
-## `local-https-dev hello world`
-
-Say hello world
+Remove a domain from the registered domains
 
 ```
 USAGE
-  $ local-https-dev hello world
+  $ local-https-dev domain remove -d <value>
+
+FLAGS
+  -d, --domain=<value>  (required) The domain that you would like to remove from the system
 
 DESCRIPTION
-  Say hello world
+  Remove a domain from the registered domains
 
 EXAMPLES
-  $ oex hello world
-  hello world! (./src/commands/hello/world.ts)
+  $ local-https-dev domain remove
 ```
 
 ## `local-https-dev help [COMMAND]`
@@ -291,5 +323,23 @@ FLAGS
 
 DESCRIPTION
   Update installed plugins.
+```
+
+## `local-https-dev user register USER`
+
+Register a user that is on the system so that we can edit the trust servers for their account
+
+```
+USAGE
+  $ local-https-dev user register [USER]
+
+ARGUMENTS
+  USER  The username for the account using the browser (eg. run "whoami")
+
+DESCRIPTION
+  Register a user that is on the system so that we can edit the trust servers for their account
+
+EXAMPLES
+  $ local-https-dev user register
 ```
 <!-- commandsstop -->
