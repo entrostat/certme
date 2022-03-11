@@ -1,4 +1,4 @@
-import { Command, Flags } from '@oclif/core';
+import { Flags } from '@oclif/core';
 import { BaseCommand } from '../../shared/base.command';
 import { removeDomainFromNginx } from '../../shared/remove-domain-from-nginx';
 

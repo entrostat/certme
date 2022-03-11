@@ -1,4 +1,3 @@
-import { Command, Flags } from '@oclif/core';
 import { BaseCommand } from '../../shared/base.command';
 
 export default class DomainList extends BaseCommand {
@@ -11,7 +10,6 @@ export default class DomainList extends BaseCommand {
     static args = [];
 
     public async run(): Promise<void> {
-        const { args, flags } = await this.parse(DomainList);
         const config = await this.getConfig();
         config.domains.forEach((domain) => {
             this.log(`127.0.0.1:${domain.port} ---> https://${domain.domain}`);

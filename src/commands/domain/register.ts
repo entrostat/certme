@@ -1,4 +1,4 @@
-import { Command, Flags } from '@oclif/core';
+import { Flags } from '@oclif/core';
 import { BaseCommand } from '../../shared/base.command';
 import { v4 as uuid } from 'uuid';
 import { addDomainToHostsFile } from '../../shared/add-domain-to-hosts-file';

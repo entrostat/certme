@@ -1,4 +1,3 @@
-import { Command, Flags } from '@oclif/core';
 import { BaseCommand } from '../../shared/base.command';
 
 export default class UserRegister extends BaseCommand {
