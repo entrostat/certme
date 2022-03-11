@@ -1,11 +1,10 @@
-oclif-hello-world
+local-https-dev
 =================
 
-oclif example Hello World CLI
+A CLI used to create a local https dev environment with the green lock.
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![CircleCI](https://circleci.com/gh/oclif/hello-world/tree/main.svg?style=shield)](https://circleci.com/gh/oclif/hello-world/tree/main)
 [![Downloads/week](https://img.shields.io/npm/dw/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
 [![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
 
@@ -13,6 +12,55 @@ oclif example Hello World CLI
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
+
+# Introduction
+
+So you have a lot of projects running locally. To get to them, you visit `http://localhost:8080`. If you want HTTPS, you always get that "warning" window from your browser saying it's not safe. What's worse is that each system has different seeded users, now you need to remember the username and passwords for each one because your browser can't tell the difference between `http://localhost:3000` and `http://localhost:9000`.
+
+This CLI is the answer to all of your problems. It allows you to set up custom development domains and routes them to the correct port on your local machine. You can set `https://mydev.local` to point to `http://localhost:8080` and your browser will trust the certificate!
+
+## Dependencies
+I've decided that I don't really want to do all of the work, no need to reinvent the wheel. So there are a few things you need installed on your PC before starting here:
+
+ - [nginx](https://www.nginx.com/)
+ - [mkcert](http://mkcert.dev/)
+
+These two tools are used to generate the cert, use the cert and route traffic to the correct port.
+
+I suggest you ensure that `nginx` is always running on system startup after you install it by using the following command:
+
+```bash
+sudo systemctl enable nginx
+```
+
+## Getting Started
+Getting started is pretty easy! If you have `nginx` and `mkcert` installed, then you just need to install the CLI.
+
+Once the CLI is installed, you need to register your system username (the certificates are generated locally) and then start adding your domains.
+
+And example of the commands would be as follows, you'll notice that it must be run as `sudo` since it edits the `/etc/hosts` file and creates an `nginx` config file. 
+
+```bash
+sudo local-https-dev user:register kerren
+sudo local-https-dev domain:register --domain=mytestdomain.com --port=9000
+```
+
+And that should be it! Visit [https://mytestdomain.com](https://mytestdomain.com) and you should see the green lock!
+
+![](./assets/local-https-dev_eg1.png)
+
+Now if you visit the domain:
+
+![](./assets/local-https-dev_eg2.png)
+
+
+# Roadmap
+This was my "POC" to ensure that I wasn't crazy and that it was possible to get this to work, there are a couple of features that I'd like to implement from this point:
+
+ - [ ] Create an `init` command that installs everything for you and prompts you for the info needed for a better UX.
+ - [ ] Use `dnsmasq` instead of editing the `hosts` file so that I have wildcards... and I don't edit the `hosts` file.
+ - [ ] Create a frontend dashboard to show you what has been registered and allow you to make edits
+
 # Usage
 <!-- usage -->
 ```sh-session
