@@ -1,6 +1,7 @@
 import { Flags } from '@oclif/core';
 import { BaseCommand } from '../../shared/base.command';
 import { removeDomainFromNginx } from '../../shared/remove-domain-from-nginx';
+import { removeDomainFromHostsFile } from '../../shared/remove-domain-from-hosts-file';
 
 export default class DomainRemove extends BaseCommand {
     static description = 'Remove a domain from the registered domains';
@@ -28,6 +29,7 @@ export default class DomainRemove extends BaseCommand {
             this.log(`Removing entry: 127.0.0.1:${found.port} ---> https://${found.domain} (uuid: ${found.uuid})`);
             config.domains = config.domains.filter((d) => d.domain !== flags.domain);
             await removeDomainFromNginx(found.domain);
+            await removeDomainFromHostsFile(found, await this.getHostsBackupPath());
             await this.saveConfig(config);
             return;
         }
