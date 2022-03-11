@@ -3,6 +3,7 @@ import * as fs from 'fs-extra';
 import * as path from 'path';
 import { exec } from 'child_process';
 import { getCertificateRoot } from './get-certificate-root';
+import { generateNginxConfPath } from './generate-nginx-conf-path';
 
 export async function addDomainToNginx(domain: Domain, user: string) {
     const caRoot = await getCertificateRoot(user);
@@ -32,11 +33,11 @@ export async function addDomainToNginx(domain: Domain, user: string) {
 
 	location /__local_https_route {
 	  add_header Content-Type text/html;
-	  return 200 '<html><body><h1>127.0.0.1:${domain.port} ---> https://${domain.domain}</h1></body></html>';
+	  return 200 '<html lang="en"><body><h1>https://${domain.domain} ---> 127.0.0.1:${domain.port}</h1></body></html>';
 	}
 }
 `;
-    await fs.writeFile(path.join('/etc/nginx/conf.d', `${domain.domain.replace(/[^A-Za-z0-9.]/g, '')}.conf`), domainEntry);
+    await fs.writeFile(generateNginxConfPath(domain.domain), domainEntry);
     return new Promise((resolve, reject) => {
         exec(`systemctl restart nginx`, (err, stdout, stderr) => {
             if (err) {
