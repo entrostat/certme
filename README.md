@@ -62,6 +62,7 @@ This was my "POC" to ensure that I wasn't crazy and that it was possible to get 
  - [ ] Create an `init` command that installs everything for you and prompts you for the info needed for a better UX.
  - [ ] Use `dnsmasq` instead of editing the `hosts` file so that I have wildcards... and I don't edit the `hosts` file.
  - [ ] Create a frontend dashboard to show you what has been registered and allow you to make edits
+ - [ ] Create builds for all the different platforms: `deb`, `snap`, `AppImage`, etc.
 
 # Usage
 <!-- usage -->
