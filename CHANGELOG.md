@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/entrostat/certme/compare/v1.1.0...v1.1.1) (2022-03-12)
+
+
+### Bug Fixes
+
+* **build:** Removed the ability to add plugins and cleaned up the keywords for search on NPM ([cca2d92](https://github.com/entrostat/certme/commit/cca2d9263822150e82ec47ce9e5cc8c75aff791b))
+
 ## [1.1.0](https://github.com/entrostat/certme/compare/v1.0.3...v1.1.0) (2022-03-12)
 
 
