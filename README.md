@@ -1,7 +1,8 @@
 certme
 =================
 
-A CLI used to create a local https dev environment with the green lock.
+A CLI used to create a local https dev environment with the green lock. Setup takes less than 5 minutes and all of your projects will be running locally over HTTPS with custom domain names in no time!
+
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg?style=for-the-badge)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/certme.svg?style=for-the-badge)](https://npmjs.org/package/certme)
@@ -61,6 +62,27 @@ Now if you visit the domain:
 ![](./assets/certme_eg2.png)
 
 
+## Extra Functionality
+
+There are a few extra features I've added to the project to improve the UX.
+
+### Autocompletion
+
+You can add the autocompletion to one of your favourite shells. Just run,
+
+```bash
+certme autocomplete
+```
+
+And follow the instructions to add it to your shell.
+
+### Route Check
+
+If you want to see which port the custom domain you created is going to, you can use the endpoint: `__local_https_route`. For instance, if I've registered [https://mytestdomain.com](https://mytestdomain.com) to point to port `9000`, I can visit [https://mytestdomain.com/__local_https_route](https://mytestdomain.com/__local_https_route) and this is what I'd see:
+
+![](./assets/certme_local_route.png)
+
+
 # Roadmap
 This was my "POC" to ensure that I wasn't crazy and that it was possible to get this to work, there are a couple of features that I'd like to implement from this point:
 
@@ -76,7 +98,7 @@ $ npm install -g certme
 $ certme COMMAND
 running command...
 $ certme (--version)
-certme/1.0.3 linux-x64 node-v14.17.3
+certme/1.1.0 linux-x64 node-v14.17.3
 $ certme --help [COMMAND]
 USAGE
   $ certme COMMAND
@@ -85,6 +107,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`certme autocomplete [SHELL]`](#certme-autocomplete-shell)
 * [`certme domain clear-all`](#certme-domain-clear-all)
 * [`certme domain list`](#certme-domain-list)
 * [`certme domain register`](#certme-domain-register)
@@ -97,6 +120,35 @@ USAGE
 * [`certme plugins:uninstall PLUGIN...`](#certme-pluginsuninstall-plugin)
 * [`certme plugins update`](#certme-plugins-update)
 * [`certme user register USER`](#certme-user-register-user)
+
+## `certme autocomplete [SHELL]`
+
+display autocomplete installation instructions
+
+```
+USAGE
+  $ certme autocomplete [SHELL] [-r]
+
+ARGUMENTS
+  SHELL  shell type
+
+FLAGS
+  -r, --refresh-cache  Refresh cache (ignores displaying instructions)
+
+DESCRIPTION
+  display autocomplete installation instructions
+
+EXAMPLES
+  $ certme autocomplete
+
+  $ certme autocomplete bash
+
+  $ certme autocomplete zsh
+
+  $ certme autocomplete --refresh-cache
+```
+
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v1.2.0/src/commands/autocomplete/index.ts)_
 
 ## `certme domain clear-all`
 
