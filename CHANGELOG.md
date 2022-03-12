@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/Kerren-Entrostat/certme/compare/v1.0.2...v1.0.3) (2022-03-12)
+
+
+### Bug Fixes
+
+* **docs:** Updated the image to use the certme cli script ([62e255d](https://github.com/Kerren-Entrostat/certme/commit/62e255d74773f8ce7c96e0849562820c2bc00744))
+
 ### [1.0.2](https://github.com/Kerren-Entrostat/certme/compare/v1.0.1...v1.0.2) (2022-03-11)
 
 
