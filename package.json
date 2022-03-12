@@ -1,6 +1,6 @@
 {
   "name": "certme",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A CLI to add and remove local development environments and create https certificates for them.",
   "author": "Kerren @Kerren-Entrostat",
   "bin": {
@@ -51,15 +51,10 @@
     "commands": "./dist/commands",
     "plugins": [
       "@oclif/plugin-help",
-      "@oclif/plugin-plugins",
       "@oclif/plugin-autocomplete"
     ],
     "topicSeparator": " ",
-    "topics": {
-      "hello": {
-        "description": "Say hello to the world and others"
-      }
-    }
+    "topics": {}
   },
   "scripts": {
     "build": "shx rm -rf dist && tsc -b",
@@ -78,7 +73,18 @@
   },
   "bugs": "https://github.com/entrostat/certme/issues",
   "keywords": [
-    "oclif"
+    "oclif",
+    "cli",
+    "https",
+    "routing",
+    "dev",
+    "development",
+    "local",
+    "trusted",
+    "certificate",
+    "localhost",
+    "nginx",
+    "mkcert"
   ],
   "types": "dist/index.d.ts"
 }

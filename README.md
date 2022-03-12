@@ -98,7 +98,7 @@ $ npm install -g certme
 $ certme COMMAND
 running command...
 $ certme (--version)
-certme/1.1.0 linux-x64 node-v14.17.3
+certme/1.1.1 linux-x64 node-v14.17.3
 $ certme --help [COMMAND]
 USAGE
   $ certme COMMAND
@@ -113,12 +113,6 @@ USAGE
 * [`certme domain register`](#certme-domain-register)
 * [`certme domain remove`](#certme-domain-remove)
 * [`certme help [COMMAND]`](#certme-help-command)
-* [`certme plugins`](#certme-plugins)
-* [`certme plugins:inspect PLUGIN...`](#certme-pluginsinspect-plugin)
-* [`certme plugins:install PLUGIN...`](#certme-pluginsinstall-plugin)
-* [`certme plugins:link PLUGIN`](#certme-pluginslink-plugin)
-* [`certme plugins:uninstall PLUGIN...`](#certme-pluginsuninstall-plugin)
-* [`certme plugins update`](#certme-plugins-update)
 * [`certme user register USER`](#certme-user-register-user)
 
 ## `certme autocomplete [SHELL]`
@@ -236,152 +230,6 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v5.1.12/src/commands/help.ts)_
-
-## `certme plugins`
-
-List installed plugins.
-
-```
-USAGE
-  $ certme plugins [--core]
-
-FLAGS
-  --core  Show core plugins.
-
-DESCRIPTION
-  List installed plugins.
-
-EXAMPLES
-  $ certme plugins
-```
-
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v2.1.0/src/commands/plugins/index.ts)_
-
-## `certme plugins:inspect PLUGIN...`
-
-Displays installation properties of a plugin.
-
-```
-USAGE
-  $ certme plugins:inspect PLUGIN...
-
-ARGUMENTS
-  PLUGIN  [default: .] Plugin to inspect.
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Displays installation properties of a plugin.
-
-EXAMPLES
-  $ certme plugins:inspect myplugin
-```
-
-## `certme plugins:install PLUGIN...`
-
-Installs a plugin into the CLI.
-
-```
-USAGE
-  $ certme plugins:install PLUGIN...
-
-ARGUMENTS
-  PLUGIN  Plugin to install.
-
-FLAGS
-  -f, --force    Run yarn install with force flag.
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Installs a plugin into the CLI.
-
-  Can be installed from npm or a git url.
-
-  Installation of a user-installed plugin will override a core plugin.
-
-  e.g. If you have a core plugin that has a 'hello' command, installing a user-installed plugin with a 'hello' command
-  will override the core plugin implementation. This is useful if a user needs to update core plugin functionality in
-  the CLI without the need to patch and update the whole CLI.
-
-ALIASES
-  $ certme plugins add
-
-EXAMPLES
-  $ certme plugins:install myplugin 
-
-  $ certme plugins:install https://github.com/someuser/someplugin
-
-  $ certme plugins:install someuser/someplugin
-```
-
-## `certme plugins:link PLUGIN`
-
-Links a plugin into the CLI for development.
-
-```
-USAGE
-  $ certme plugins:link PLUGIN
-
-ARGUMENTS
-  PATH  [default: .] path to plugin
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Links a plugin into the CLI for development.
-
-  Installation of a linked plugin will override a user-installed or core plugin.
-
-  e.g. If you have a user-installed or core plugin that has a 'hello' command, installing a linked plugin with a 'hello'
-  command will override the user-installed or core plugin implementation. This is useful for development work.
-
-EXAMPLES
-  $ certme plugins:link myplugin
-```
-
-## `certme plugins:uninstall PLUGIN...`
-
-Removes a plugin from the CLI.
-
-```
-USAGE
-  $ certme plugins:uninstall PLUGIN...
-
-ARGUMENTS
-  PLUGIN  plugin to uninstall
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Removes a plugin from the CLI.
-
-ALIASES
-  $ certme plugins unlink
-  $ certme plugins remove
-```
-
-## `certme plugins update`
-
-Update installed plugins.
-
-```
-USAGE
-  $ certme plugins update [-h] [-v]
-
-FLAGS
-  -h, --help     Show CLI help.
-  -v, --verbose
-
-DESCRIPTION
-  Update installed plugins.
-```
 
 ## `certme user register USER`
 
