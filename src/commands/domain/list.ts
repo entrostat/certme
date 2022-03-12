@@ -14,10 +14,17 @@ export default class DomainList extends BaseCommand {
         const config = await this.getConfig();
 
         CliUx.ux.table(
-            config.domains.map((d) => ({
-                domain: `https://${d.domain}`,
-                port: d.port.toString(),
-            })),
+            config.domains
+                .map((d) => ({
+                    domain: `https://${d.domain}`,
+                    port: d.port.toString(),
+                }))
+                .sort((a, b) => {
+                    if (a === b) {
+                        return 0;
+                    }
+                    return a < b ? -1 : 1;
+                }),
             {
                 domain: {
                     header: 'Domain',
