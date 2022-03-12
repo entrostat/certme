@@ -98,7 +98,7 @@ $ npm install -g certme
 $ certme COMMAND
 running command...
 $ certme (--version)
-certme/1.0.3 linux-x64 node-v14.17.3
+certme/1.1.0 linux-x64 node-v14.17.3
 $ certme --help [COMMAND]
 USAGE
   $ certme COMMAND
@@ -107,6 +107,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`certme autocomplete [SHELL]`](#certme-autocomplete-shell)
 * [`certme domain clear-all`](#certme-domain-clear-all)
 * [`certme domain list`](#certme-domain-list)
 * [`certme domain register`](#certme-domain-register)
@@ -119,6 +120,35 @@ USAGE
 * [`certme plugins:uninstall PLUGIN...`](#certme-pluginsuninstall-plugin)
 * [`certme plugins update`](#certme-plugins-update)
 * [`certme user register USER`](#certme-user-register-user)
+
+## `certme autocomplete [SHELL]`
+
+display autocomplete installation instructions
+
+```
+USAGE
+  $ certme autocomplete [SHELL] [-r]
+
+ARGUMENTS
+  SHELL  shell type
+
+FLAGS
+  -r, --refresh-cache  Refresh cache (ignores displaying instructions)
+
+DESCRIPTION
+  display autocomplete installation instructions
+
+EXAMPLES
+  $ certme autocomplete
+
+  $ certme autocomplete bash
+
+  $ certme autocomplete zsh
+
+  $ certme autocomplete --refresh-cache
+```
+
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v1.2.0/src/commands/autocomplete/index.ts)_
 
 ## `certme domain clear-all`
 
