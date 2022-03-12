@@ -1,7 +1,8 @@
 certme
 =================
 
-A CLI used to create a local https dev environment with the green lock.
+A CLI used to create a local https dev environment with the green lock. Setup takes less than 5 minutes and all of your projects will be running locally over HTTPS with custom domain names in no time!
+
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg?style=for-the-badge)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/certme.svg?style=for-the-badge)](https://npmjs.org/package/certme)
