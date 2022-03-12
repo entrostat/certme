@@ -76,6 +76,13 @@ certme autocomplete
 
 And follow the instructions to add it to your shell.
 
+### Route Check
+
+If you want to see which port the custom domain you created is going to, you can use the endpoint: `__local_https_route`. For instance, if I've registered [https://mytestdomain.com](https://mytestdomain.com) to point to port `9000`, I can visit [https://mytestdomain.com/__local_https_route](https://mytestdomain.com/__local_https_route) and this is what I'd see:
+
+![](./assets/certme_local_route.png)
+
+
 # Roadmap
 This was my "POC" to ensure that I wasn't crazy and that it was possible to get this to work, there are a couple of features that I'd like to implement from this point:
 
