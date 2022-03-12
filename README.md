@@ -1,7 +1,8 @@
 certme
 =================
 
-A CLI used to create a local https dev environment with the green lock.
+A CLI used to create a local https dev environment with the green lock. Setup takes less than 5 minutes and all of your projects will be running locally over HTTPS with custom domain names in no time!
+
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg?style=for-the-badge)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/certme.svg?style=for-the-badge)](https://npmjs.org/package/certme)
@@ -60,6 +61,20 @@ Now if you visit the domain:
 
 ![](./assets/certme_eg2.png)
 
+
+## Extra Functionality
+
+There are a few extra features I've added to the project to improve the UX.
+
+### Autocompletion
+
+You can add the autocompletion to one of your favourite shells. Just run,
+
+```bash
+certme autocomplete
+```
+
+And follow the instructions to add it to your shell.
 
 # Roadmap
 This was my "POC" to ensure that I wasn't crazy and that it was possible to get this to work, there are a couple of features that I'd like to implement from this point:
