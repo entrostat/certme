@@ -1,4 +1,5 @@
 import { BaseCommand } from '../../shared/base.command';
+import { CliUx } from '@oclif/core';
 
 export default class DomainList extends BaseCommand {
     static description = 'Lists the existing domains that have been registered';
@@ -11,9 +12,24 @@ export default class DomainList extends BaseCommand {
 
     public async run(): Promise<void> {
         const config = await this.getConfig();
-        config.domains.forEach((domain) => {
-            this.log(`127.0.0.1:${domain.port} ---> https://${domain.domain}`);
-        });
+
+        CliUx.ux.table(
+            config.domains.map((d) => ({
+                domain: `https://${d.domain}`,
+                port: d.port.toString(),
+            })),
+            {
+                domain: {
+                    header: 'Domain',
+                },
+                port: {
+                    header: 'Port',
+                },
+            },
+            {
+                printLine: this.log.bind(this),
+            },
+        );
 
         if (config.domains.length === 0) {
             this.log('No domains registered...');
