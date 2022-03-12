@@ -1,6 +1,6 @@
 {
   "name": "certme",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A CLI to add and remove local development environments and create https certificates for them.",
   "author": "Kerren @Kerren-Entrostat",
   "bin": {
@@ -28,7 +28,7 @@
     "@types/chai": "^4",
     "@types/fs-extra": "^9.0.13",
     "@types/mocha": "^9.0.0",
-    "@types/node": "^16.9.4",
+    "@types/node": "^16.11.26",
     "@types/uuid": "^8.3.4",
     "chai": "^4",
     "entro-version": "^1.7.0",

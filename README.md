@@ -3,10 +3,10 @@ certme
 
 A CLI used to create a local https dev environment with the green lock.
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![Downloads/week](https://img.shields.io/npm/dw/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg?style=for-the-badge)](https://oclif.io)
+[![Version](https://img.shields.io/npm/v/certme.svg?style=for-the-badge)](https://npmjs.org/package/certme)
+[![Downloads/week](https://img.shields.io/npm/dw/certme.svg?style=for-the-badge)](https://npmjs.org/package/certme)
+[![License](https://img.shields.io/npm/l/certme.svg?style=for-the-badge)](https://github.com/Kerren-Entrostat/certme/blob/master/package.json)
 
 <!-- toc -->
 * [Introduction](#introduction)
@@ -76,7 +76,7 @@ $ npm install -g certme
 $ certme COMMAND
 running command...
 $ certme (--version)
-certme/1.0.2 linux-x64 node-v16.14.0
+certme/1.0.3 linux-x64 node-v14.17.3
 $ certme --help [COMMAND]
 USAGE
   $ certme COMMAND
