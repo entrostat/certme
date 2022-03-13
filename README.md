@@ -100,7 +100,7 @@ $ npm install -g certme
 $ certme COMMAND
 running command...
 $ certme (--version)
-certme/1.1.1 linux-x64 node-v14.17.3
+certme/1.1.2 linux-x64 node-v14.17.3
 $ certme --help [COMMAND]
 USAGE
   $ certme COMMAND
