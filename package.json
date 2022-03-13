@@ -1,6 +1,6 @@
 {
   "name": "certme",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A CLI to add and remove local development environments and create https certificates for them.",
   "author": "Kerren @Kerren-Entrostat",
   "bin": {
