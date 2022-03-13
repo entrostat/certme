@@ -49,9 +49,11 @@ Once the CLI is installed, you need to register your system username (the certif
 And example of the commands would be as follows, you'll notice that it must be run as `sudo` since it edits the `/etc/hosts` file and creates an `nginx` config file. 
 
 ```bash
-sudo certme user:register kerren
+sudo certme user:register $(whoami)
 sudo certme domain:register --domain=mytestdomain.com --port=9000
 ```
+
+The user is the name of the account that you're logged into because we need to register the certificate authority and trust it under your account. This will then ensure that your browser picks it up!
 
 And that should be it! Visit [https://mytestdomain.com](https://mytestdomain.com) and you should see the green lock!
 
