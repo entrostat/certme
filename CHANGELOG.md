@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/entrostat/certme/compare/v1.1.1...v1.1.2) (2022-03-13)
+
+
+### Bug Fixes
+
+* **docs:** Updated the user registration example with a script to get your actual user, otherwise there may be issues where users try to use my username or other user names that are not the ones registered on the system ([2ea23ca](https://github.com/entrostat/certme/commit/2ea23cab3f8ef23af59b7d3d98a144ffeb67169b))
+
 ### [1.1.1](https://github.com/entrostat/certme/compare/v1.1.0...v1.1.1) (2022-03-12)
 
 
