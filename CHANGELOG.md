@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/entrostat/certme/compare/v1.1.2...v2.0.0) (2022-04-02)
+
+
+### Features
+
+* **build:** Added a builder to the project ([15859da](https://github.com/entrostat/certme/commit/15859da162fa398b1c40ffc192fff70cd71160cf))
+
+
+### Bug Fixes
+
+* **deps:** Updated the libraries in the project ([8bcf81c](https://github.com/entrostat/certme/commit/8bcf81c7e2076bccecc6915f478214012a7cbae4))
+
 ### [1.1.2](https://github.com/entrostat/certme/compare/v1.1.1...v1.1.2) (2022-03-13)
 
 

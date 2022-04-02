@@ -1,0 +1,9 @@
+version: "3.6"
+services:
+  deb-build:
+    build:
+      context: ../../..
+      dockerfile: $PWD/Dockerfile
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ../../../dist:/app/dist-final
