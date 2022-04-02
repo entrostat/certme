@@ -41,6 +41,10 @@ sudo systemctl enable nginx
 Getting started is pretty easy! If you have `nginx` and `mkcert` installed, then you just need to install the CLI. You can pull the `.deb` file from the latest releases and then install it using `gdebi` or `dpkg`:
 
 ```bash
+# First download the .deb file:
+curl -L https://github.com/entrostat/certme/releases/download/v2.0.0/certme.deb -o certme.deb
+
+# Now install using gdebi or dpkg
 sudo gdebi -i certme.deb
 # OR
 sudo dpkg -i certme.deb
