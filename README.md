@@ -11,6 +11,7 @@ A CLI used to create a local https dev environment with the green lock. Setup ta
 
 <!-- toc -->
 * [Introduction](#introduction)
+* [OR](#or)
 * [Roadmap](#roadmap)
 * [Usage](#usage)
 * [Commands](#commands)
@@ -101,7 +102,7 @@ $ npm install -g certme
 $ certme COMMAND
 running command...
 $ certme (--version)
-certme/1.1.2 linux-x64 node-v14.17.3
+certme/2.0.0 linux-x64 node-v14.17.3
 $ certme --help [COMMAND]
 USAGE
   $ certme COMMAND
