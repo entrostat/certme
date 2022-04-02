@@ -37,11 +37,12 @@ sudo systemctl enable nginx
 ```
 
 ## Getting Started
-Getting started is pretty easy! If you have `nginx` and `mkcert` installed, then you just need to install the CLI.
+Getting started is pretty easy! If you have `nginx` and `mkcert` installed, then you just need to install the CLI. You can pull the `.deb` file from the latest releases and then install it using `gdebi` or `dpkg`:
 
 ```bash
-npm install -g certme
-sudo ln -s $(which certme) /usr/bin/certme
+sudo gdebi -i certme.deb
+# OR
+sudo dpkg -i certme.deb
 ```
 
 Once the CLI is installed, you need to register your system username (the certificates are generated locally) and then start adding your domains.
