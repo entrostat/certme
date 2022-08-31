@@ -11,6 +11,8 @@ A CLI used to create a local https dev environment with the green lock. Setup ta
 
 <!-- toc -->
 * [Introduction](#introduction)
+* [First download the .deb file:](#first-download-the-deb-file)
+* [Now install using gdebi or dpkg](#now-install-using-gdebi-or-dpkg)
 * [OR](#or)
 * [Roadmap](#roadmap)
 * [Usage](#usage)
@@ -106,7 +108,7 @@ $ npm install -g certme
 $ certme COMMAND
 running command...
 $ certme (--version)
-certme/2.0.0 linux-x64 node-v14.17.3
+certme/2.0.0 linux-x64 node-v16.15.0
 $ certme --help [COMMAND]
 USAGE
   $ certme COMMAND
@@ -150,7 +152,7 @@ EXAMPLES
   $ certme autocomplete --refresh-cache
 ```
 
-_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v1.2.0/src/commands/autocomplete/index.ts)_
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v1.3.0/src/commands/autocomplete/index.ts)_
 
 ## `certme domain clear-all`
 

@@ -42,15 +42,20 @@ export default class DomainRegister extends BaseCommand {
         const domain: Domain = {
             domain: flags.domain,
             port: flags.port,
-            uuid: uuid().toString(),
+            uuid: uuid().toString() as string,
         };
         config.domains.push(domain);
-        await this.saveConfig(config);
 
-        await addDomainToHostsFile(domain, await this.getHostsBackupPath());
-        await createCertificate(config.domains, config.user);
-        await addDomainToNginx(domain, config.user);
+        try {
+          await this.saveConfig(config);
 
-        this.log(`Domain registered successfully`);
+          await addDomainToHostsFile(domain, await this.getHostsBackupPath());
+          await createCertificate(config.domains, config.user);
+          await addDomainToNginx(domain, config.user);
+
+          this.log(`Domain registered successfully`);
+        } catch (e) {
+          this.error(`An error has occurred: ${e.message}`)
+        }
     }
 }
