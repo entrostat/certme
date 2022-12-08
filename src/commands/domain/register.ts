@@ -54,7 +54,7 @@ export default class DomainRegister extends BaseCommand {
           await addDomainToNginx(domain, config.user);
 
           this.log(`Domain registered successfully`);
-        } catch (e) {
+        } catch (e: any) {
           this.error(`An error has occurred: ${e.message}`)
         }
     }
