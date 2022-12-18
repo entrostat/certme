@@ -1,9 +1,9 @@
 import { Flags } from '@oclif/core';
 import { BaseCommand } from '../../shared/base.command';
 import { v4 as uuid } from 'uuid';
-import { addDomainToHostsFile } from '../../shared/add-domain-to-hosts-file';
+import { addDomainToHostsFile } from '../../shared/hosts/add-domain-to-hosts-file';
 import { Domain } from '../../shared/models/domain';
-import { addDomainToNginx } from '../../shared/add-domain-to-nginx';
+import { addDomainToNginx } from '../../shared/nginx/add-domain-to-nginx';
 import { createCertificate } from '../../shared/mkcert/create-certificate';
 
 export default class DomainRegister extends BaseCommand {
