@@ -1,7 +1,7 @@
 import { Flags } from '@oclif/core';
 import { BaseCommand } from '../../shared/base.command';
-import { removeDomainFromNginx } from '../../shared/remove-domain-from-nginx';
-import { removeDomainFromHostsFile } from '../../shared/remove-domain-from-hosts-file';
+import { removeDomainFromNginx } from '../../shared/nginx/remove-domain-from-nginx';
+import { removeDomainFromHostsFile } from '../../shared/hosts/remove-domain-from-hosts-file';
 
 export default class DomainRemove extends BaseCommand {
     static description = 'Remove a domain from the registered domains';

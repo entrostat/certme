@@ -127,7 +127,7 @@ module.exports = {
         // We require all vars to be initialized (see init-declarations)
         // If we NEED a var to be initialized to undefined, it needs to be explicit
         'no-undef-init': OFF,
-        'no-undef': ERROR,
+        'no-undef': WARN,
         'no-undefined': OFF,
         'no-unused-vars': WARN,
         // Disallow hoisting - let & const don't allow hoisting anyhow
@@ -202,6 +202,7 @@ module.exports = {
         'no-trailing-spaces': WARN,
         'no-underscore-dangle': WARN,
         'no-unneeded-ternary': WARN,
+        'no-async-promise-executor': OFF,
         'object-curly-spacing': [WARN, 'always'],
         'one-var': OFF,
         'operator-assignment': [WARN, 'never'],
