@@ -2,7 +2,7 @@ const OFF = 0,
     WARN = 1,
     ERROR = 2;
 
-module.exports = exports = {
+module.exports = {
     env: {
         es6: true,
     },
@@ -19,7 +19,7 @@ module.exports = exports = {
 
     rules: {
         // Possible Errors (overrides from recommended set)
-        'no-extra-parens': ERROR,
+        'no-extra-parens': WARN,
         'no-unexpected-multiline': ERROR,
         // All JSDoc comments must be valid
         'valid-jsdoc': [
@@ -146,7 +146,7 @@ module.exports = exports = {
         'no-sync': WARN,
 
         // ECMAScript 6 support
-        'arrow-body-style': [ERROR, 'always'],
+        'arrow-body-style': OFF,
         'arrow-parens': [ERROR, 'always'],
         'arrow-spacing': [ERROR, { before: true, after: true }],
         'constructor-super': ERROR,
@@ -164,7 +164,7 @@ module.exports = exports = {
         'require-yield': ERROR,
 
         // Stylistic - everything here is a warning because of style.
-        'array-bracket-spacing': [WARN, 'always'],
+        'array-bracket-spacing': OFF,
         'block-spacing': [WARN, 'always'],
         'brace-style': [WARN, '1tbs', { allowSingleLine: false }],
         camelcase: WARN,
@@ -175,13 +175,13 @@ module.exports = exports = {
         'eol-last': WARN,
         'func-names': WARN,
         'func-style': [WARN, 'declaration'],
-        'id-length': [WARN, { min: 2, max: 32 }],
+        'id-length': OFF,
         indent: [WARN, 4],
         'jsx-quotes': [WARN, 'prefer-double'],
         'linebreak-style': [WARN, 'unix'],
         'lines-around-comment': [WARN, { beforeBlockComment: true }],
         'max-depth': [WARN, 8],
-        'max-len': [WARN, 132],
+        'max-len': OFF,
         'max-nested-callbacks': [WARN, 8],
         'max-params': [WARN, 8],
         'new-cap': WARN,
@@ -205,7 +205,7 @@ module.exports = exports = {
         'object-curly-spacing': [WARN, 'always'],
         'one-var': OFF,
         'operator-assignment': [WARN, 'never'],
-        'operator-linebreak': [WARN, 'after'],
+        'operator-linebreak': [WARN, 'before'],
         'padded-blocks': [WARN, 'never'],
         'quote-props': [WARN, 'consistent-as-needed'],
         quotes: [WARN, 'single'],

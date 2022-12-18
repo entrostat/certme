@@ -47,15 +47,15 @@ export default class DomainRegister extends BaseCommand {
         config.domains.push(domain);
 
         try {
-          await this.saveConfig(config);
+            await this.saveConfig(config);
 
-          await addDomainToHostsFile(domain, await this.getHostsBackupPath());
-          await createCertificate(config.domains, config.user);
-          await addDomainToNginx(domain, config.user);
+            await addDomainToHostsFile(domain, await this.getHostsBackupPath());
+            await createCertificate(config.domains, config.user);
+            await addDomainToNginx(domain, config.user);
 
-          this.log(`Domain registered successfully`);
+            this.log(`Domain ${flags.domain} registered successfully`);
         } catch (e: any) {
-          this.error(`An error has occurred: ${e.message}`)
+            this.error(`An error has occurred: ${e.message}`);
         }
     }
 }

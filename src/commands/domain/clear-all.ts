@@ -8,11 +8,11 @@ export default class DomainClearAll extends BaseCommand {
     static examples = ['<%= config.bin %> <%= command.id %>'];
 
     static flags = {
-      force: Flags.boolean({
-        char: 'f',
-        description: 'Force the removal of the domains, do not ask for confirmation',
-        default: false
-      })
+        force: Flags.boolean({
+            char: 'f',
+            description: 'Force the removal of the domains, do not ask for confirmation',
+            default: false,
+        }),
     };
 
     static args = [];
@@ -21,8 +21,8 @@ export default class DomainClearAll extends BaseCommand {
         this.log(`WARNING - We are about to clear all of your domains...`);
         const { flags } = await this.parse(DomainClearAll);
         if (!flags.force && !(await CliUx.ux.confirm(`Are you sure you want to clear the domains?`))) {
-          this.error(`Confirmation not received`);
-          this.exit(1);
+            this.error(`Confirmation not received`);
+            this.exit(1);
         }
         const config = await this.getConfig();
         const backupPath = await backupConfigFile(config, await this.getConfigBackupPath());
