@@ -2,7 +2,7 @@ import { Domain } from './models/domain';
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { exec } from 'child_process';
-import { getCertificateRoot } from './get-certificate-root';
+import { getCertificateRoot } from './mkcert/get-certificate-root';
 import { generateNginxConfPath } from './generate-nginx-conf-path';
 
 export async function addDomainToNginx(domain: Domain, user: string) {

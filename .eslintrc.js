@@ -202,6 +202,7 @@ module.exports = {
         'no-trailing-spaces': WARN,
         'no-underscore-dangle': WARN,
         'no-unneeded-ternary': WARN,
+        'no-async-promise-executor': OFF,
         'object-curly-spacing': [WARN, 'always'],
         'one-var': OFF,
         'operator-assignment': [WARN, 'never'],

@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 import { addDomainToHostsFile } from '../../shared/add-domain-to-hosts-file';
 import { Domain } from '../../shared/models/domain';
 import { addDomainToNginx } from '../../shared/add-domain-to-nginx';
-import { createCertificate } from '../../shared/create-certificate';
+import { createCertificate } from '../../shared/mkcert/create-certificate';
 
 export default class DomainRegister extends BaseCommand {
     static description = 'Registers a new domain, creates the certificate, nginx config update and a change in the hosts file.';
