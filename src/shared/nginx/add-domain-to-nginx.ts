@@ -4,6 +4,7 @@ import * as path from 'path';
 import { exec } from 'child_process';
 import { getCertificateRoot } from '../mkcert/get-certificate-root';
 import { generateNginxConfPath } from './generate-nginx-conf-path';
+import { executeCommand } from 'entro-version/dist/shared/execute-command';
 
 export async function addDomainToNginx(domain: Domain, user: string) {
     const caRoot = await getCertificateRoot(user);
@@ -38,12 +39,6 @@ export async function addDomainToNginx(domain: Domain, user: string) {
 }
 `;
     await fs.writeFile(generateNginxConfPath(domain.domain), domainEntry);
-    return new Promise((resolve, reject) => {
-        exec(`systemctl restart nginx`, (err, stdout, stderr) => {
-            if (err) {
-                return reject(stderr);
-            }
-            resolve(stdout);
-        });
-    });
+    await executeCommand(`nginx -t`, console.log, console.error);
+    return executeCommand(`systemctl restart nginx`, console.log, console.error);
 }
