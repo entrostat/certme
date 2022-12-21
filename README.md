@@ -152,7 +152,7 @@ EXAMPLES
   $ certme autocomplete --refresh-cache
 ```
 
-_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v1.3.0/src/commands/autocomplete/index.ts)_
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v1.3.8/src/commands/autocomplete/index.ts)_
 
 ## `certme domain clear-all`
 
@@ -160,7 +160,10 @@ Removes all of the registered domains
 
 ```
 USAGE
-  $ certme domain clear-all
+  $ certme domain clear-all [-f]
+
+FLAGS
+  -f, --force  Force the removal of the domains, do not ask for confirmation
 
 DESCRIPTION
   Removes all of the registered domains

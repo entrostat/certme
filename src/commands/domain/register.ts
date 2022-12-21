@@ -31,7 +31,10 @@ export default class DomainRegister extends BaseCommand {
         this.log(`Registering new domain:`);
         this.log(`127.0.0.1:${flags.port} ---> https://${flags.domain}`);
 
+        this.debug(`Pulling config file`);
         const config = await this.getConfig();
+        this.debug(`Retrieved config file with value:`);
+        this.debug(JSON.stringify(config));
 
         const domainExists = config.domains.some((d) => d.domain === flags.domain && d.port === flags.port);
 
@@ -47,15 +50,24 @@ export default class DomainRegister extends BaseCommand {
         config.domains.push(domain);
 
         try {
+            this.debug(`Saving config...`);
+            this.debug(JSON.stringify(config));
             await this.saveConfig(config);
+            this.debug(`Config saved...`);
 
+            this.debug(`Adding domain to hosts file...`);
             await addDomainToHostsFile(domain, await this.getHostsBackupPath());
+            this.debug(`Added domain to hosts file...`);
+            this.debug(`Creating the certificate...`);
             await createCertificate(config.domains, config.user);
+            this.debug(`Created certificate successfully...`);
+            this.debug(`Adding the nginx config file...`);
             await addDomainToNginx(domain, config.user);
+            this.debug(`Added the nginx config file successfully...`);
 
             this.log(`Domain ${flags.domain} registered successfully`);
         } catch (e: any) {
-            this.error(`An error has occurred: ${e.message}`);
+            this.error(`An error has occurred: ${e.message}. ${JSON.stringify(e)}`);
         }
     }
 }
