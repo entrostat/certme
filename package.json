@@ -41,7 +41,7 @@
     "globby": "^11",
     "mocha": "^10",
     "oclif": "^3",
-    "prettier": "^2.8.1",
+    "prettier": "^2.8.4",
     "shx": "^0.3.4",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
